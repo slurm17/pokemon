@@ -1,0 +1,38 @@
+@import '../general/boxShadow';
+
+.paginado {
+  display: grid;
+  grid-template-columns: 2rem 2rem 2rem;
+  gap: 10px;
+
+  .pagina {
+    // border: 1px solid white;
+    border: none;
+    color: white;
+    font-weight: 600;
+    background-color: #800080;
+    text-align: center;
+    padding: 1rem 0;
+    border-radius: 2px;
+    @include boxShadow;
+
+    &:nth-child(2) {
+      background-color: #572364;
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+    }
+  }
+
+  .opaco {
+    background-color: #572364;
+  }
+}
+
+@media (max-width: 650px) {
+  .paginado {
+    margin-bottom: 15%;
+    -webkit-transform: scale(1.5);
+      transform: scale(1.5);
+      gap: 15px;
+  }
+}

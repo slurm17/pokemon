@@ -1,0 +1,40 @@
+@import '../general/boxShadow';
+
+.card-pokemon {
+  width: 10rem;
+  margin-bottom: 2rem;
+  border: 5px solid white;
+  border-radius: 15px;
+  background-color: rgba(255, 0, 0, 0);
+  @include boxShadow;
+  cursor: pointer;
+  p {
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  &:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+@media (max-width: 650px) {
+  .card-pokemon {
+    width: 80%;
+    &:hover {
+        -webkit-transform: none;
+        transform: none;
+        transition: none;
+      }
+
+      p {
+
+        font-size: 2.2rem;
+
+      }
+  }
+}

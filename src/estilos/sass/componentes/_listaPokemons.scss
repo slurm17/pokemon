@@ -1,0 +1,18 @@
+.lista-pokemones{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 2rem;
+}
+
+.loading-lista-pokemones{
+    height: 50vh;
+    margin: 1.5rem;
+}
+
+@media( max-width: 650px) {
+    .lista-pokemones{
+        justify-content: center;
+        margin: 2rem 0;
+    }
+}
