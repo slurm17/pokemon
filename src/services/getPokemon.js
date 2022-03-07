@@ -1,5 +1,5 @@
 import { pokemonApi } from "../api/pokemonApi"
-import { procesarDatosPokemon } from "./procesarDatosPokemon";
+import { procesarDatosPokemon } from "./procesar_datos/procesarDatosPokemon";
 
 export const getPokemon = async (id) =>  {
     let res = await pokemonApi.get(

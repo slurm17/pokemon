@@ -10,8 +10,8 @@ const AppRouter = () => {
       <Route path="/details/:id" element={<PokemonDetalles />} />
       <Route path="/home/:id" element={<Home />} />
       <Route path="/home" element={<Home/>} /> 
-      <Route path="/" element={<Navigate replace to="/home" />} />
-      <Route path="*" element={<Navigate replace to="/home" />} />
+      <Route path="/" element={<Navigate replace to="/home/1" />} />
+      <Route path="*" element={<Navigate replace to="/home/1" />} />
     </Routes>
   );
 };

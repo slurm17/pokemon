@@ -1,23 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { getPokemones } from "../services/getPokemones";
 import Pokemon from "./Pokemon";
 import "../estilos/estilo.css";
-import {useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import PokemonContext from "../context/PokemonContext";
 
-const ListaPokemons = ({cantPokemonesAMostrar }) => {
+const ListaPokemons = ({ cantPokemonesAMostrar }) => {
   const [pokemones, setPokemones] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
-  
+  const { isPaginaVisitada, guardarPagina, traerPokemonesDesdePagina } =
+    useContext(PokemonContext);
+
   useEffect(() => {
-    //Envía offset y limit
     setIsLoading(true);
-    getPokemones((parseInt(id) - 1) * cantPokemonesAMostrar, cantPokemonesAMostrar).then(
-      (p) => {
-        setPokemones(p);
-        setIsLoading(false);
+    isPaginaVisitada(id).then((visitada) => {
+      if (visitada) {
+        traerPokemonesDesdePagina(id).then((pok) => {
+          setPokemones(pok);
+          setIsLoading(false);
+        });
+      } else {
+        //Envía offset y limit
+        getPokemones(
+          (parseInt(id) - 1) * cantPokemonesAMostrar,
+          cantPokemonesAMostrar
+        ).then((pok) => {
+          setPokemones(pok);
+          guardarPagina(id, pok);
+          setIsLoading(false);
+        });
       }
-    );
+    });
   }, [id]);
 
   return (

@@ -1,5 +1,5 @@
 import { pokemonApi } from "../api/pokemonApi";
-import { procesarDatosListPokemones } from "./procesarDatosListPokemones";
+import { procesarDatosListPokemones } from "./procesar_datos/procesarDatosListPokemones";
 
 export const getPokemones = async (offset, limit) => {
   let res = await pokemonApi.get(
