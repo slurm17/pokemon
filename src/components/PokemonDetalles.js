@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { getPokemon } from "../services/getPokemon";
 import "../estilos/estilo.css";
+import PokemonContext from "../context/PokemonContext";
 
 const PokemonDetalles = () => {
   const { id } = useParams();
   const [pokemon, setPokemon] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { traerDetallesPokemon } = useContext(PokemonContext);
 
   useEffect(() => {
-    getPokemon(id).then((p) => {
+    traerDetallesPokemon(id).then((p) => {
       setPokemon(p);
-      //Espera de 700ms porque sino no trae habilidades
-      setTimeout(function () {
-        setIsLoading(false);
-      }, 700);
+      setIsLoading(false)
     });
   }, []);
 
